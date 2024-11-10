@@ -4,8 +4,8 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 # Establece el directorio de trabajo
 WORKDIR /app
 
-# Copia los archivos del proyecto y restaura las dependencias
-COPY *.csproj ./
+# Copia el archivo del proyecto .csproj y restaura las dependencias
+COPY MiProyecto.csproj ./
 RUN dotnet restore
 
 # Copia el resto de los archivos y construye el proyecto
@@ -22,4 +22,4 @@ EXPOSE 80
 COPY --from=build /app/publish .
 
 # Define el comando de inicio de la aplicación
-ENTRYPOINT ["dotnet", "HelloWorld.dll"]
+ENTRYPOINT ["dotnet", "MiProyecto.dll"]
